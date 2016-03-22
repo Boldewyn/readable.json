@@ -1,0 +1,27 @@
+{
+  "name": "visual_json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manuel Strehl",
+  "license": "ISC",
+  "devDependencies": {
+    "jspm": "^0.17.0-beta.11"
+  },
+  "jspm": {
+    "name": "visual_json",
+    "dependencies": {
+      "hyperscript": "npm:hyperscript@^1.4.7",
+      "hyperscript-helpers": "npm:hyperscript-helpers@^2.1.0"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.8"
+    },
+    "peerDependencies": {
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+    }
+  }
+}

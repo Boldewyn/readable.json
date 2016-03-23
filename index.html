@@ -56,8 +56,18 @@ a {
   </head>
   <body>
     <main>
-      <div id="stage"></div>
-      <div id="ctrl">
+      <nav>
+        <ul>
+          <li>
+            <a href="#stage">View Data</a>
+          </li>
+          <li>
+            <a href="#ctrl">Enter Data</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="tab-panel" id="stage"></div>
+      <div class="tab-panel" id="ctrl">
         <textarea id="data" rows="12" cols="40"></textarea>
         <button type="button" id="render">show</button>
       </div>

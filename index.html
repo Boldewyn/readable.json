@@ -3,10 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <style>
-body {
+/*body {
   font: normal 100%/1.5 DejaVu Sans,sans-serif;
-}
+}*/
 
 main {
   max-width: 40em;
@@ -49,29 +51,125 @@ a {
 #ctrl textarea {
   box-sizing: border-box;
   width: 100%;
-  height: 15em;
+  height: 75vh;
+  min-height: 400px;
   font: inherit;
+  margin: 1.5em auto;
+  border: 1px solid #9e9e9e;
+}
+
+#stage {
+  margin: 1.5em auto;
+}
+
+.faq dt {
+  font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+     color: #a3a3a3;
+}
+::-moz-placeholder {
+     color: #a3a3a3;
+}
+:-ms-input-placeholder {
+     color: #a3a3a3;
 }
     </style>
   </head>
   <body>
-    <main>
+    <header>
       <nav>
-        <ul>
-          <li>
-            <a href="#stage">View Data</a>
-          </li>
-          <li>
-            <a href="#ctrl">Enter Data</a>
-          </li>
-        </ul>
+        <div class="container">
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Human JSON</a>
+            <ul class="right">
+              <li><a href="#about" class="modal-trigger" title="opens as a dialog!">About</a></li>
+              <li><a href="https://github.com/Boldewyn/visual_json">Github Repo</a></li>
+            </ul>
+          </div>
+        </div>
       </nav>
-      <div class="tab-panel" id="stage"></div>
-      <div class="tab-panel" id="ctrl">
-        <textarea id="data" rows="12" cols="40"></textarea>
-        <button type="button" id="render">show</button>
+    </header>
+    <main>
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s4">
+              <a href="#ctrl" class="active">Enter JSON</a>
+            </li>
+            <li class="tab col s4 disabled">
+              <a href="#stage-container">View Content</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col s12 tab-panel" id="ctrl">
+          <textarea id="data" rows="12" cols="40" placeholder="JSON data goes in here. Then press “Make readable!”"></textarea>
+          <button type="button" id="render" class="btn waves-effect"><i class="material-icons left">thumb_up</i> Make readable!</button>
+        </div>
+        <div class="col s12 tab-panel" id="stage-container">
+          <div id="stage"></div>
+          <a href="#ctrl" id="back-to-edit" class="btn waves-effect"><i class="material-icons left">assignment_return</i> Back to the input!</a>
+        </div>
       </div>
     </main>
+    <footer>
+      <div id="about" class="modal">
+        <div class="modal-content">
+          <h4>About Human JSON</h4>
+          <p>Hey, welcome! This site wants to help you make sense of some JSON, that you got hold of.</p>
+          <h5>FAQ</h5>
+          <dl class="faq">
+            <dt>What happened to all the braces and quotes?!?</dt>
+            <dd>Rest assured, your original JSON is unharmed! The readable view
+              tries to remove as much syntax clutter as possible from the data.
+              At the same time it processes the content to make links clickable,
+              colors visible, and timestamps readable.</dd>
+            <dt>Will my data get sent to the ’Net?</dt>
+            <dd>No. We will never send any of your data over the wire. The
+              whole process works locally in your browser.</dd>
+            <dt>Can I pre-fill the JSON field somehow?</dt>
+            <dd>Yes. Link to this page with the data appended as anchor hash:
+              <pre>http://this-url.com/#json={"foo":"bar"}</pre>
+              Note, that you will have to URL-encode it properly, so that it arrives here unclobbered.<br>
+              Note also, that in this case others can possibly see your JSON data. <strong>Do not use this method for sensitive content!</strong>
+            </dd>
+            <dt>Who’s behind this?</dt>
+            <dd>Hi! I’m Manuel Strehl, a web developer from Germany. You can
+              find me <a href="https://twitter.com/m_strehl">on Twitter</a>,
+              read <a href="http://www.manuel-strehl.de">my blog</a> or
+              view <a href="https://github.com/Boldewyn">my other Github projects</a>.
+            </dd>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons left">done</i> Yep, thanks!</a>
+        </div>
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <script>
+      $('ul.tabs').tabs();
+      $('#render').on('click', function() {
+        $('ul.tabs')
+          .find('.disabled')
+            .removeClass('disabled')
+          .end()
+          .tabs('select_tab', 'stage-container');
+      });
+      $('#back-to-edit').on('click', function() {
+        $('ul.tabs')
+          .tabs('select_tab', 'ctrl');
+      });
+      $('.modal-trigger').leanModal();
+      if (document.location.hash.search(/#json=/) === 0) {
+        var qs = document.location.hash;
+        var payload = decodeURIComponent(qs.substr(6));
+        if (payload && payload !== qs) {
+          $('#data').val(payload);
+        }
+      }
+    </script>
     <script src="bundle.js"></script>
   </body>
 </html>

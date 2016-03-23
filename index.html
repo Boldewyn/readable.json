@@ -8,23 +8,60 @@ body {
   font: normal 100%/1.5 DejaVu Sans,sans-serif;
 }
 
-.json-b--true {
-  color: green;
+main {
+  max-width: 40em;
+  margin: 1.5em auto;
 }
 
-.json-b--false {
-  color: red;
+a {
+  text-decoration: none;
+  color: #303f9f;
+}
+
+.json-object-key {
+  font-weight: bold;
+  x-float: left;
+  x-clear: left;
+  min-width: 6em;
+  margin-right: .25em;
+}
+
+.json-object-key:after {
+  content: ":";
+}
+
+.json-bool--true {
+  color: #2e7d32;
+}
+
+.json-bool--false {
+  color: #b71c1c;
 }
 
 .json-null {
-  color: gray;
+  color: #607d8b;
+}
+
+.p-color {
+  padding: 0 .25em;
+}
+
+#ctrl textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 15em;
+  font: inherit;
 }
     </style>
   </head>
   <body>
-    <div id="stage"></div>
-    <textarea id="data"></textarea>
-    <button type="button" id="render">show</button>
+    <main>
+      <div id="stage"></div>
+      <div id="ctrl">
+        <textarea id="data" rows="12" cols="40"></textarea>
+        <button type="button" id="render">show</button>
+      </div>
+    </main>
     <script src="bundle.js"></script>
   </body>
 </html>

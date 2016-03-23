@@ -15,13 +15,79 @@
     "name": "visual_json",
     "dependencies": {
       "hyperscript": "npm:hyperscript@^1.4.7",
-      "hyperscript-helpers": "npm:hyperscript-helpers@^2.1.0"
+      "hyperscript-helpers": "npm:hyperscript-helpers@^2.1.0",
+      "text-autolinker": "npm:text-autolinker@^0.0.3"
     },
     "devDependencies": {
       "plugin-babel": "npm:systemjs-plugin-babel@^0.0.8"
     },
     "peerDependencies": {
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha"
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "aws-sign2": "npm:aws-sign2@0.5",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "dgram": "github:jspm/nodelibs-dgram@^0.2.0-alpha",
+      "dns": "github:jspm/nodelibs-dns@^0.2.0-alpha",
+      "domain": "github:jspm/nodelibs-domain@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "form-data": "npm:form-data@0.1",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "hapi": "npm:hapi@^4",
+      "hawk": "npm:hawk@1.0",
+      "http": "github:jspm/nodelibs-http@^0.2.0-alpha",
+      "http-signature": "npm:http-signature@0.10",
+      "https": "github:jspm/nodelibs-https@^0.2.0-alpha",
+      "module": "github:jspm/nodelibs-module@^0.2.0-alpha",
+      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
+      "oauth-sign": "npm:oauth-sign@0.3",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "punycode": "github:jspm/nodelibs-punycode@^0.2.0-alpha",
+      "querystring": "github:jspm/nodelibs-querystring@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "tls": "github:jspm/nodelibs-tls@^0.2.0-alpha",
+      "tough-cookie": "npm:tough-cookie",
+      "tunnel-agent": "npm:tunnel-agent@0.3",
+      "uglify-js": "npm:uglify-js@~2.3",
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha",
+      "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:browserify-zlib@0.1.4": {
+        "dependencies": {
+          "readable-stream": "^2.0.2",
+          "pako": "~0.2.0"
+        },
+        "map": {
+          "_stream_transform": "readable-stream/transform"
+        }
+      },
+      "npm:inherits@2.0.1": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:readable-stream@1.1.13": {
+        "map": {
+          "stream": "stream-browserify/index"
+        },
+        "systemjs": {
+          "main": "readable.js"
+        },
+        "dependencies": {
+          "core-util-is": "~1.0.0",
+          "inherits": "~2.0.1",
+          "isarray": "0.0.1",
+          "string_decoder": "~0.10.0",
+          "stream-browserify": "^1.0.0"
+        }
+      }
     }
   }
 }

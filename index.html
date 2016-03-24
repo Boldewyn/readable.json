@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <style>
-/*body {
-  font: normal 100%/1.5 DejaVu Sans,sans-serif;
-}*/
+body {
+  color: #222;
+}
 
 main {
   max-width: 40em;
@@ -16,20 +16,31 @@ main {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: #303f9f;
 }
 
 .json-object-key {
   font-weight: bold;
-  x-float: left;
-  x-clear: left;
+  color: #444;
+  float: left;
   min-width: 6em;
-  margin-right: .25em;
+  margin-right: .5em;
 }
 
 .json-object-key:after {
   content: ":";
+}
+
+.json-object-value:after {
+  content: "";
+  display: block;
+}
+
+.json-object-value:after,
+.json-object-value > .json-object,
+.json-object-value > .json-array {
+  clear: left;
 }
 
 .json-bool--true {
@@ -40,8 +51,17 @@ a {
   color: #b71c1c;
 }
 
+.json-number {
+  color: #01579b;
+}
+
 .json-null {
   color: #607d8b;
+}
+
+.json-empty {
+  color: #939393;
+  font-style: italic;
 }
 
 .p-color {
@@ -142,7 +162,7 @@ a {
             </dd>
         </div>
         <div class="modal-footer">
-          <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons left">done</i> Yep, thanks!</a>
+          <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons left">done</i> Yep, thanks!</button>
         </div>
       </div>
     </footer>
@@ -151,6 +171,9 @@ a {
     <script>
       $('ul.tabs').tabs();
       $('#render').on('click', function() {
+        var json = document.getElementById('data').value;
+        render_view(json, document.getElementById('stage'));
+        document.location.hash = '#json='+encodeURIComponent(json);
         $('ul.tabs')
           .find('.disabled')
             .removeClass('disabled')

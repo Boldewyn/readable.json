@@ -7,9 +7,7 @@ const css_colors = [ 'black', 'silver', 'gray', 'white', 'maroon', 'red',
   'purple', 'fuchsia', 'green', 'lime', 'olive', 'yellow', 'navy', 'blue',
   'teal', 'aqua', 'orange', 'rebeccapurple', ];
 
-function render_view() {
-  var json = document.getElementById('data').value;
-  var stage = document.getElementById('stage');
+function render_view(json, stage) {
   var tree = div('.json-root');
 
   try {
@@ -33,6 +31,8 @@ function render_view() {
   stage.innerHTML = '';
   stage.appendChild(tree);
 }
+
+window.render_view = render_view;
 
 function typeOf(obj) {
   return {}.toString.call(obj).split(' ')[1].slice(0, -1).toLowerCase();
@@ -60,8 +60,7 @@ render.object = function(data, tree) {
     subtree.appendChild(item);
   }
   if (! subtree.children.length) {
-    subtree.className += ' json-object--empty';
-    subtree.innerHTML = '<dd class="json-object-empty_marker">empty map</dd>';
+    subtree = div('.json-object.json-object--empty.json-empty', '(empty map)');
   }
   tree.appendChild(subtree);
 }
@@ -75,18 +74,20 @@ render.array = function(data, tree) {
     })
   );
   if (! subtree.children.length) {
-    subtree.className += ' json-array--empty';
-    subtree.innerHTML = '<li class="json-array-item json-array-item--dummy">empty list</li>';
+    subtree = div('.json-array.json-array--empty.json-empty', '(empty list)');
   }
   tree.appendChild(subtree);
 }
 
 render.string = function(data, tree) {
-  tree.appendChild(span('.json-string', parse_string(data)));
+  tree.appendChild(span('.json-string' +
+      (data?'':'.json-string--empty.json-empty'),
+      parse_string(data)));
 }
 
 function transform_key(str) {
   str = str.replace(/([a-z])([A-Z])/g, (m, l, u) => l+' '+u.toLowerCase());
+  str = str.replace(/_/g, ' ');
   str = str.replace(/^[a-z]/, m => m.toUpperCase());
   if (str === 'Id') {
     str = 'ID';
@@ -97,19 +98,23 @@ function transform_key(str) {
 function parse_string(str) {
   var frag = span('.p-string');
   if (str) {
-    frag.innerHTML = str.replace(new RegExp(
+    frag.innerHTML = str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(new RegExp(
           /* url */
           '(https?:\\/\\/[a-zA-Z0-9#%&()*+,\\-.\\/:;=?@_~]+)|'+
           /* email */
           '([a-zA-Z0-9._\\-+:]+@[a-zA-Z0-9.\\-]+)|'+
           /* date */
-          '([0-9]{4}-[0-9]{2}-[0-9]{2}(?:[T ][012][0-9]:[0-5][0-9](?::[0-5][0-9])?(?: [A-Z]+| [+}-][0-9:]+)?)?)|'+
+          '([0-9]{4}-[0-9]{2}-[0-9]{2}(?:[T ][012][0-9]:[0-5][0-9](?::[0-5][0-9](?:\.[0-9]+)?)?(?: ?[A-Z]+| ?[+-][0-9:]+)?)?)|'+
           /* .NET date */
           '("\\\\\\/Date\\([0-9]+\\)\\\\\\/")|'+
           /* CSS color */
           '('+css_colors.join('|')+'|(?:rgb|hsl)a?\\([^)]+\\)|#[a-fA-F0-9]{3}(?:[a-fA-F0-9]{3})?\\b)|'+
           /* Twitter handle */
-          '(\\b@[a-z_0-9]{1,16})', 'g'),
+          '(@[a-z_0-9]{1,16})', 'g'),
       function (m, url, email, date, dNET_date, color, twitter) {
         if (url) {
           return '<a class="p-url" href="'+url+'">'+url.replace(/^https?:\/\//, '')+'</a>';
@@ -118,10 +123,10 @@ function parse_string(str) {
           return '<a class="p-email" href="mailto:'+email.replace('mailto:', '')+'">'+email.replace('mailto:', '')+'</a>';
         }
         if (date) {
-          return '<abbr class="p-date" title="'+date+'">'+(new Date(date.replace(/ /, ''))).toLocaleString()+'</abbr>';
+          return '<abbr class="p-date" title="'+date+'">'+(new Date(date.replace(/ /g, ''))).toLocaleString()+'</abbr>';
         }
         if (dNET_date) {
-          return '<abbr class="p-date p-date--dotnet" title="'+dNET_date+'">'+(new Date(parseInt(dNET_date.replace(/"\\\/Date\(([0-9]+)\)\\\/"/, '$1'), 10))).toLocaleString()+'</abbr>';
+          return '<abbr class="p-date p-date--dotnet" title="'+dNET_date.replace(/"/g, '&quot;')+'">'+(new Date(parseInt(dNET_date.replace(/"\\\/Date\(([0-9]+)\)\\\/"/, '$1'), 10))).toLocaleString()+'</abbr>';
         }
         if (color) {
           return '<span class="p-color" style="box-shadow: inset 0 0 4px '+color+'">'+color+'</span>';
@@ -141,7 +146,11 @@ function parse_string(str) {
 
 render.number = function(data, tree) {
   var method = data.toLocaleString? 'toLocaleString' : 'toString';
-  tree.appendChild(span('.json-number', data[method]()));
+  var _span = span('.json-number', data[method]());
+  if (method === 'toLocaleString') {
+    _span.title = data.toString();
+  }
+  tree.appendChild(_span);
 }
 
 render.boolean = function(data, tree) {
@@ -157,5 +166,3 @@ render.null = function(data, tree) {
     title: 'null',
   }, '\u2014'));
 }
-
-document.getElementById('render').addEventListener('click', render_view);

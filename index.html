@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Human JSON</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
     <style>
 body {
@@ -168,31 +169,6 @@ a {
     </footer>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script>
-      $('ul.tabs').tabs();
-      $('#render').on('click', function() {
-        var json = document.getElementById('data').value;
-        render_view(json, document.getElementById('stage'));
-        document.location.hash = '#json='+encodeURIComponent(json);
-        $('ul.tabs')
-          .find('.disabled')
-            .removeClass('disabled')
-          .end()
-          .tabs('select_tab', 'stage-container');
-      });
-      $('#back-to-edit').on('click', function() {
-        $('ul.tabs')
-          .tabs('select_tab', 'ctrl');
-      });
-      $('.modal-trigger').leanModal();
-      if (document.location.hash.search(/#json=/) === 0) {
-        var qs = document.location.hash;
-        var payload = decodeURIComponent(qs.substr(6));
-        if (payload && payload !== qs) {
-          $('#data').val(payload);
-        }
-      }
-    </script>
     <script src="bundle.js"></script>
   </body>
 </html>

@@ -1,6 +1,8 @@
 'use strict';
 
 
+import jQuery from 'jquery';
+import materialize from 'materialize/dist/js/materialize.js';
 import render_view from './render';
 
 $('ul.tabs').tabs();

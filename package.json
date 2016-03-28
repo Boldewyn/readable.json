@@ -16,6 +16,8 @@
     "dependencies": {
       "hyperscript": "npm:hyperscript@^1.4.7",
       "hyperscript-helpers": "npm:hyperscript-helpers@^2.1.0",
+      "jquery": "github:components/jquery@^2.2.1",
+      "materialize": "github:Dogfalo/materialize@^0.97.5",
       "text-autolinker": "npm:text-autolinker@^0.0.3"
     },
     "devDependencies": {
@@ -59,6 +61,27 @@
       "zlib": "github:jspm/nodelibs-zlib@^0.2.0-alpha"
     },
     "overrides": {
+      "github:Dogfalo/materialize@0.97.5": {
+        "main": "js/materialize",
+        "format": "global",
+        "registry": "github",
+        "dependencies": {
+          "jquery": "github:components/jquery",
+          "css": "github:systemjs/plugin-css"
+        },
+        "meta": {
+          "js/materialize.js": {
+            "deps": [
+              "jquery",
+              "../css/materialize.css!"
+            ],
+            "format": "global"
+          }
+        }
+      },
+      "github:components/jquery@2.2.1": {
+        "main": "jquery"
+      },
       "npm:browserify-zlib@0.1.4": {
         "dependencies": {
           "readable-stream": "^2.0.2",

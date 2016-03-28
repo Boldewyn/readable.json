@@ -39,6 +39,8 @@ SystemJS.config({
     "https": "github:jspm/nodelibs-https@0.2.0-alpha",
     "hyperscript": "npm:hyperscript@1.4.7",
     "hyperscript-helpers": "npm:hyperscript-helpers@2.1.0",
+    "jquery": "github:components/jquery@2.2.1",
+    "materialize": "github:Dogfalo/materialize@0.97.5",
     "module": "github:jspm/nodelibs-module@0.2.0-alpha",
     "net": "github:jspm/nodelibs-net@0.2.0-alpha",
     "oauth-sign": "npm:oauth-sign@0.3.0",
@@ -61,6 +63,12 @@ SystemJS.config({
     "zlib": "github:jspm/nodelibs-zlib@0.2.0-alpha"
   },
   packages: {
+    "github:Dogfalo/materialize@0.97.5": {
+      "map": {
+        "css": "github:systemjs/plugin-css@0.1.20",
+        "jquery": "github:components/jquery@2.2.1"
+      }
+    },
     "github:jspm/nodelibs-buffer@0.2.0-alpha": {
       "map": {
         "buffer-browserify": "npm:buffer@4.5.0"

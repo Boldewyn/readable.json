@@ -3,6 +3,6 @@ SystemJS.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "visual_json/": "src/"
+    "readable.json/": "src/"
   }
 });

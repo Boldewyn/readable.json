@@ -1,7 +1,7 @@
 {
   "lang": "en",
-  "name": "Human JSON",
-  "short_name": "human JSON",
+  "name": "Readable JSON",
+  "short_name": "Readable JSON",
   "scope": "/",
   "display": "standalone",
   "start_url": "/",

@@ -1,7 +1,7 @@
 SystemJS.config({
   transpiler: "plugin-babel",
   packages: {
-    "visual_json": {
+    "readable.json": {
       "format": "esm",
       "main": "main.js",
       "meta": {

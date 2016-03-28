@@ -1,5 +1,5 @@
 {
-    "Human JSON": "Welcome! This page helps you to render JSON in a way that is most helpful for non-technical users.",
+    "Readable JSON": "Welcome! This page helps you to render JSON in a way that is most helpful for non-technical users.",
     "true": true,
     "false": false,
     "null": null,
@@ -18,7 +18,7 @@
     "colorHex": "#008000",
     "colorRGB": "rgba(0, 127, 0, .5)",
     "twitter": "@m_strehl",
-    "complex_text": "Lorem ipsum https://github.com/Boldewyn/visual_json dolor sit amet info@example.com red orange yellow lime green aqua blue purple.",
+    "complex_text": "Lorem ipsum https://github.com/Boldewyn/readable.json dolor sit amet info@example.com red orange yellow lime green aqua blue purple.",
     "Mark<em>Up</em>": "<b>This is HTML</b>, a <a href=\"http://x.org\">link</a>",
     "array": [
       1,

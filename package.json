@@ -9,7 +9,8 @@
   "author": "Manuel Strehl",
   "license": "MIT",
   "devDependencies": {
-    "jspm": "^0.17.0-beta.11"
+    "jspm": "^0.17.0-beta.11",
+    "node-sass": "^3.4.2"
   },
   "jspm": {
     "name": "readable.json",

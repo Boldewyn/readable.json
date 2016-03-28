@@ -1,0 +1,27 @@
+#ctrl textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 75vh;
+  min-height: 400px;
+  font: inherit;
+  margin: 1.5em auto;
+  border: 1px solid #9e9e9e;
+}
+
+#stage {
+  margin: 1.5em auto;
+}
+
+.faq dt {
+  font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+     color: #a3a3a3;
+}
+::-moz-placeholder {
+     color: #a3a3a3;
+}
+:-ms-input-placeholder {
+     color: #a3a3a3;
+}

@@ -1,0 +1,49 @@
+.json-object-key {
+  font-weight: bold;
+  color: #444;
+  float: left;
+  min-width: 6em;
+  margin-right: .5em;
+
+  &:after {
+    content: ":";
+  }
+}
+
+.json-object-value:after {
+  content: "";
+  display: block;
+}
+
+.json-object-value:after,
+.json-object-value > .json-object,
+.json-object-value > .json-array {
+  clear: left;
+}
+
+.json-bool {
+  &--true {
+    color: #2e7d32;
+  }
+
+  &--false {
+    color: #b71c1c;
+  }
+}
+
+.json-number {
+  color: #01579b;
+}
+
+.json-null {
+  color: #607d8b;
+}
+
+.json-empty {
+  color: #939393;
+  font-style: italic;
+}
+
+.p-color {
+  padding: 0 .25em;
+}

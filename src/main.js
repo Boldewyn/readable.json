@@ -1,3 +1,6 @@
+'use strict';
+
+
 import render_view from './render';
 
 $('ul.tabs').tabs();
@@ -24,7 +27,7 @@ if (document.location.hash.search(/#json=/) === 0) {
   var qs = document.location.hash;
   var payload = decodeURIComponent(qs.substr(6));
   if (payload) {
-    $('#data').val(payload);
+    document.getElementById('data').value = payload;
     $('#render').trigger('click');
   }
 }

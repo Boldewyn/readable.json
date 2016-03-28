@@ -1,0 +1,33 @@
+{
+    "Human JSON": "Welcome! This page helps you to render JSON in a way that is most helpful for non-technical users.",
+    "true": true,
+    "false": false,
+    "null": null,
+    "largeNumber": 123456789.09876543,
+    "smallNumber": 1.234e-12,
+    "integer": 1234,
+    "zero": 0,
+    "emptyObject": {},
+    "emptyArray": [],
+    "emptyString": "",
+    "url": "http://www.google.com/foo?bar#baz",
+    "email": "carrberg@zilladyne.com",
+    "timestamp": "2016-03-25T01:23:45.678-01:00",
+    "dotNET_date": "\"\\/Date(1456780123245)\\/\"",
+    "colorName": "green",
+    "colorHex": "#008000",
+    "colorRGB": "rgba(0, 127, 0, .5)",
+    "twitter": "@m_strehl",
+    "complex_text": "Lorem ipsum https://github.com/Boldewyn/visual_json dolor sit amet info@example.com red orange yellow lime green aqua blue purple.",
+    "Mark<em>Up</em>": "<b>This is HTML</b>, a <a href=\"http://x.org\">link</a>",
+    "array": [
+      1,
+      2,
+      3
+    ],
+    "object": {
+      "a": 1,
+      "b": 2,
+      "c": 3
+    }
+}

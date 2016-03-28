@@ -1,0 +1,11 @@
+{
+  "lang": "en",
+  "name": "Human JSON",
+  "short_name": "human JSON",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "/",
+  "theme_color": "#660000",
+  "background_color": "#F7F7F7",
+  "icons": []
+}

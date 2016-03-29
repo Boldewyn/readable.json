@@ -16,7 +16,7 @@
     "esversion": 6,
     "strict": "global",
     "globals": {
-      "$": true,
+      "window": true,
       "document": true
     }
   },

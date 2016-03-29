@@ -9,12 +9,13 @@ main {
 
 a {
   text-decoration: underline;
-  color: #303f9f;
 }
 
 @import "../../jspm_packages/github/Dogfalo/materialize@0.97.5/sass/components/color";
 $primary-color: color("green", "lighten-2");
 $secondary-color: color("orange", "darken-1");
+$link-color: color("light-blue", "darken-2");
+
 $roboto-font-path: "fonts/roboto/";
 
 @import "../../jspm_packages/github/Dogfalo/materialize@0.97.5/sass/materialize";

@@ -1,6 +1,6 @@
 .json-object-key {
   font-weight: bold;
-  color: #444;
+  color: color('grey', 'darken-3');
   float: left;
   min-width: 6em;
   margin-right: .5em;
@@ -23,24 +23,24 @@
 
 .json-bool {
   &--true {
-    color: #2e7d32;
+    color: color("green", "darken-2");
   }
 
   &--false {
-    color: #b71c1c;
+    color: color("red", "darken-4");
   }
 }
 
 .json-number {
-  color: #01579b;
+  color: color("light-blue", "darken-4");
 }
 
 .json-null {
-  color: #607d8b;
+  color: color('blue-grey', 'base');
 }
 
 .json-empty {
-  color: #939393;
+  color: color('grey', 'base');
   font-style: italic;
 }
 

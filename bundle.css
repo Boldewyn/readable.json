@@ -6,8 +6,7 @@ main {
   margin: 1.5em auto; }
 
 a {
-  text-decoration: underline;
-  color: #303f9f; }
+  text-decoration: underline; }
 
 .materialize-red.lighten-5 {
   background-color: #fdeaeb !important; }
@@ -3639,7 +3638,7 @@ ul {
   list-style-type: none; }
 
 a {
-  color: #039be5;
+  color: #0288d1;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent; }
 
@@ -10157,7 +10156,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 .json-object-key {
   font-weight: bold;
-  color: #444;
+  color: #424242;
   float: left;
   min-width: 6em;
   margin-right: .5em; }
@@ -10174,10 +10173,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   clear: left; }
 
 .json-bool--true {
-  color: #2e7d32; }
+  color: #388E3C; }
 
 .json-bool--false {
-  color: #b71c1c; }
+  color: #B71C1C; }
 
 .json-number {
   color: #01579b; }
@@ -10186,7 +10185,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   color: #607d8b; }
 
 .json-empty {
-  color: #939393;
+  color: #9e9e9e;
   font-style: italic; }
 
 .p-color {

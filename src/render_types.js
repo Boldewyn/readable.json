@@ -48,6 +48,9 @@ render.array = function(data, tree) {
 render.string = function(data, tree) {
   tree.appendChild(span('.json-string' +
       (data?'':'.json-string--empty.json-empty'),
+      {
+        'data-original': data,
+      },
       parse_string(data)));
 }
 

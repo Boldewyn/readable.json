@@ -52,6 +52,9 @@ var $examples = $('<div>', {
   id: 'examples',
   'class': 'modal',
   html: `<div class="modal-content">
+    <div class="progress-placeholder" style="height:4px; margin: .5rem 0 1rem">
+      <div class="indeterminate"></div>
+    </div>
     <p>Load one of the following examples:</p>
     <dl>
       <dt><a href="#json=%22Hello! A URL: http://www.google.com%22">Simple string</a></dt>
@@ -75,6 +78,9 @@ var $examples = $('<div>', {
     var promise;
 
     evt.preventDefault();
+    $examples
+      .find('.progress-placeholder')
+        .addClass('progress');
 
     if (href.search('#json=') === 0) {
       promise = $.Deferred().resolve(decodeURIComponent(href.substr(6)));

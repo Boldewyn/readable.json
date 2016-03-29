@@ -64,6 +64,14 @@
               Note, that you will have to URL-encode it properly, so that it arrives here unclobbered.<br>
               Note also, that in this case others can possibly see your JSON data. <strong>Do not use this method for sensitive content!</strong>
             </dd>
+            <dt>But…, but… you changed the content and the object keys!</dt>
+            <dd>Yes, that’s intentional. This page wants to help non-technical
+              users to grasp, what’s into the JSON data. For this, things like
+              camelCase or ISO 8601 datetime strings build active barriers.
+              Readable.json removes those. If you need the original data for
+              post-processing, it’s available as HTML attribute
+              <code>data-original</code> on strings, and as <code>title</code>
+              on object keys.</dd>
             <dt>Who’s behind this?</dt>
             <dd>Hi! I’m Manuel Strehl, a web developer from Germany. You can
               find me <a href="https://twitter.com/m_strehl">on Twitter</a>,

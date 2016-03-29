@@ -100,7 +100,13 @@ var $examples = $('<div>', {
         }
       })
       .fail(() => Materialize.toast('Oops, something went wrong.', 2000))
-      .always(() => $examples.closeModal());
+      .always(() => {
+        $examples
+          .find('.progress')
+            .removeClass('progress')
+          .end()
+          .closeModal();
+      });
   })
   .appendTo(document.body);
 

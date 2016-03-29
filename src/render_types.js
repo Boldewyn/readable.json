@@ -29,7 +29,7 @@ render.object = function(data, tree) {
     subtree = div('.json-object.json-object--empty.json-empty', '(empty map)');
   }
   tree.appendChild(subtree);
-}
+};
 
 render.array = function(data, tree) {
   var subtree = ol('.json-array',
@@ -43,7 +43,7 @@ render.array = function(data, tree) {
     subtree = div('.json-array.json-array--empty.json-empty', '(empty list)');
   }
   tree.appendChild(subtree);
-}
+};
 
 render.string = function(data, tree) {
   tree.appendChild(span('.json-string' +
@@ -52,7 +52,7 @@ render.string = function(data, tree) {
         'data-original': data,
       },
       parse_string(data)));
-}
+};
 
 render.number = function(data, tree) {
   var method = data.toLocaleString? 'toLocaleString' : 'toString';
@@ -61,7 +61,7 @@ render.number = function(data, tree) {
     _span.title = data.toString();
   }
   tree.appendChild(_span);
-}
+};
 
 render.boolean = function(data, tree) {
   var value = '\u2713';
@@ -69,13 +69,13 @@ render.boolean = function(data, tree) {
     value = '\u2717';
   }
   tree.appendChild(span('.json-bool.json-bool--'+(data? 'true' : 'false'), value));
-}
+};
 
 render.null = function(data, tree) {
   tree.appendChild(span('.json-null', {
     title: 'null',
   }, '\u2014'));
-}
+};
 
 
 export default function render_item(data, tree) {

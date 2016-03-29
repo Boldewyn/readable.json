@@ -12,6 +12,14 @@
     "jspm": "^0.17.0-beta.11",
     "node-sass": "^3.4.2"
   },
+  "jshintConfig": {
+    "esversion": 6,
+    "strict": "global",
+    "globals": {
+      "$": true,
+      "document": true
+    }
+  },
   "jspm": {
     "name": "readable.json",
     "dependencies": {

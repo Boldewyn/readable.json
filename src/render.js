@@ -11,9 +11,10 @@ const { div, p, pre, } = hl(h);
 
 export default function render_view(json, stage) {
   var tree = div('.json-root');
+  var data;
 
   try {
-    var data = JSON.parse(json);
+    data = JSON.parse(json);
   } catch (e) {
     tree = div('.json-error');
     tree.appendChild(p('The provided data is invalid.'));
@@ -28,6 +29,7 @@ export default function render_view(json, stage) {
     tree = div('.json-error');
     tree.appendChild(p('A processing error occurred:'));
     tree.appendChild(pre(e.message));
+    /* global console */
     console.log(e);
   }
   stage.innerHTML = '';

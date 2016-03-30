@@ -10191,6 +10191,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .p-color {
   padding: 0 .25em; }
 
+nav {
+  background: linear-gradient(to bottom, #4CAF50, #66BB6A 28%); }
+
+.brand-logo:focus,
+.brand-logo:hover {
+  outline: none;
+  background: rgba(0, 0, 0, 0.1); }
+
 .icon, .icon > svg {
   vertical-align: middle; }
 
@@ -10217,3 +10225,18 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 :-ms-input-placeholder {
   color: #a3a3a3; }
+
+@media (max-width: 992px) {
+  /* revert some Materialize styles */
+  nav, .nav-wrapper {
+    height: auto; }
+  nav .brand-logo {
+    position: static;
+    transform: none;
+    padding-left: 15px; }
+  nav ul.right {
+    float: none !important; }
+  nav ul.right:after {
+    content: "";
+    display: block;
+    clear: left; } }

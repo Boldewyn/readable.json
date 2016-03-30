@@ -1,3 +1,13 @@
+nav {
+  background: linear-gradient(to bottom, color('green', 'base'), color('green', 'lighten-1') 28%);
+}
+
+.brand-logo:focus,
+.brand-logo:hover {
+  outline: none;
+  background: rgba(0,0,0,.1);
+}
+
 .icon, .icon > svg {
   vertical-align: middle;
 }
@@ -28,4 +38,24 @@
 }
 :-ms-input-placeholder {
      color: #a3a3a3;
+}
+
+@media (max-width: 992px) {
+  /* revert some Materialize styles */
+  nav, .nav-wrapper {
+    height: auto;
+  }
+  nav .brand-logo {
+    position: static;
+    transform: none;
+    padding-left: 15px;
+  }
+  nav ul.right {
+    float: none !important;
+  }
+  nav ul.right:after {
+    content: "";
+    display: block;
+    clear: left;
+  }
 }

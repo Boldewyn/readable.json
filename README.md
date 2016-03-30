@@ -1,6 +1,6 @@
 # Readable JSON
 
-This code powers [readable.json.boldewyn.de](https://readable.json.boldewyn.de).
+This code powers [readable-json.boldewyn.de](https://readable-json.boldewyn.de).
 Enter JSON and get a human-friendly representation.
 
 The code does

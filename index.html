@@ -25,16 +25,17 @@
       <div class="row">
         <div class="col s12">
           <ul class="tabs">
-            <li class="tab col s4">
+            <li class="tab col s4 tab--ctrl">
               <a href="#ctrl" class="active">Enter JSON</a>
             </li>
-            <li class="tab col s4 disabled">
+            <li class="tab col s4 disabled tab--stage">
               <a href="#stage-container">View Content</a>
             </li>
           </ul>
         </div>
         <div class="col s12 tab-panel" id="ctrl">
-          <textarea id="data" rows="12" cols="40" placeholder="JSON data goes in here. Then press “Make readable!” below."></textarea>
+          <textarea id="data" rows="12" cols="40"
+            placeholder="JSON data goes in here. Then press “Make readable!” below. You can also enter a URL, if the server there allows cross-origin requests."></textarea>
           <button type="button" id="render" class="btn waves-effect"><i class="icon left"><svg width="21" height="21" viewBox="0 0 24 24"><path fill="#fff" d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z"/></svg></i> Make readable!</button>
         </div>
         <div class="col s12 tab-panel" id="stage-container">
@@ -60,7 +61,7 @@
               whole process works locally in your browser.</dd>
             <dt>Can I pre-fill the JSON field somehow?</dt>
             <dd>Yes. Link to this page with the data appended as anchor hash:
-              <pre>http://this-url.com/#json={"foo":"bar"}</pre>
+              <pre>https://readable-json.boldewyn.de/#json={"foo":"bar"}</pre>
               Note, that you will have to URL-encode it properly, so that it arrives here unclobbered.<br>
               Note also, that in this case others can possibly see your JSON data. <strong>Do not use this method for sensitive content!</strong>
             </dd>
@@ -72,6 +73,12 @@
               post-processing, it’s available as HTML attribute
               <code>data-original</code> on strings, and as <code>title</code>
               on object keys.</dd>
+            <dt>When I enter a URL, I always get an error message.</dt>
+            <dd>The JSON from the URL is loaded by your browser directly. If
+              the target server doesn’t allow a browser to load the data from
+              another website (i. e. this page), the browser will report an
+              error. Unfortunately, in this case you have to go to the URL
+              yourself and copy ’n paste the JSON to this page manually.</dd>
             <dt>Who’s behind this?</dt>
             <dd>Hi! I’m Manuel Strehl, a web developer from Germany. You can
               find me <a href="https://twitter.com/m_strehl">on Twitter</a>,

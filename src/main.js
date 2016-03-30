@@ -11,6 +11,32 @@ $('ul.tabs').tabs();
 /* init modal window triggers */
 $('.modal-trigger').leanModal();
 
+/* reset application state when clicking on the home icon */
+$('.brand-logo').on('click', function(evt) {
+  evt.preventDefault();
+  document.location.hash = '';
+  document.getElementById('data').value = '';
+  $('ul.tabs')
+    .find('.tab--stage')
+      .addClass('disabled')
+    .end()
+    .tabs('select_tab', 'ctrl');
+});
+
+/**
+ * when there is JSON data, define what should be done
+ */
+function handle_content(json) {
+  render_view(json, document.getElementById('stage'));
+  document.location.hash = '#json='+encodeURIComponent(json);
+  /* enable the initially disabled "view" tab and select it */
+  $('ul.tabs')
+    .find('.disabled')
+      .removeClass('disabled')
+    .end()
+    .tabs('select_tab', 'stage-container');
+}
+
 /* make "render" button do its thing */
 $('#render').on('click', function() {
   var json = document.getElementById('data').value;
@@ -19,13 +45,16 @@ $('#render').on('click', function() {
     document.getElementById('data').focus();
     return;
   }
-  render_view(json, document.getElementById('stage'));
-  document.location.hash = '#json='+encodeURIComponent(json);
-  $('ul.tabs')
-    .find('.disabled')
-      .removeClass('disabled')
-    .end()
-    .tabs('select_tab', 'stage-container');
+  if (json.search('http') === 0) {
+    /* an URL. Try loading it. Needs CORS headers on target server */
+    $.ajax(json, {
+      dataType: 'text',
+    })
+      .done(data => handle_content(data))
+      .fail(() => Materialize.toast('I cannot load this resource :(', 2000));
+    return;
+  }
+  handle_content(json);
 });
 
 /* go back to input field */
@@ -67,6 +96,8 @@ var $examples = $('<div>', {
       <dd>An example from the JSON-LD specification.</dd>
       <dt><a href="package.json">package.json</a></dt>
       <dd>This project’s <code>package.json</code> file.</dd>
+      <dt><a href="https://api.github.com/repos/Boldewyn/readable.json">Github API response</a></dt>
+      <dd>This project’s representation in the Github API.</dd>
     </dl>
   </div>
   <div class="modal-footer">
